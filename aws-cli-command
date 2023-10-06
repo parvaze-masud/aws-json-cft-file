@@ -5,3 +5,6 @@ aws s3 ls
 
 #Create a key pair on cli
 aws ec2 create-key-pair --key-name demoKey --key-format pem
+
+#delete a key pair
+aws ec2 delete-key-pair --key-name demoKey
