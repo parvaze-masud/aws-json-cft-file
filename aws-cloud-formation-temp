@@ -1,1 +1,14 @@
+###############Lunch a EC2 Instance using CFT################################################
 
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Launch an EC2 instance
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-08e5424edfe926b43 # Replace with your desired AMI ID
+      KeyName: L-SVR-KP-APM-MASUD # Replace with your SSH key pair name
+      SecurityGroupIds:
+        - sg-012bf315941985b46 # Replace with your security group ID
+      SubnetId: subnet-0e3bbb8c0dc7e4edc # Replace with your subnet ID
