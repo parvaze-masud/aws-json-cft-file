@@ -12,3 +12,15 @@ Resources:
       SecurityGroupIds:
         - sg-012bf315941985b46 # Replace with your security group ID
       SubnetId: subnet-0e3bbb8c0dc7e4edc # Replace with your subnet ID
+
+#######################Create a S3 Bucket using CFT####################################
+
+Resources:
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: 'java-app-masud'
+      VersioningConfiguration:
+        Status: Enabled
+        
+
