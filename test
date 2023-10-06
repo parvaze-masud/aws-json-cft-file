@@ -8,13 +8,11 @@ codebuild-flask-python-service-role
 
 version: 0.2
 
-#env:
-  #variables:
-     # key: "value"
-     # key: "value"
-  #parameter-store:
-     # key: "value"
-     # key: "value"
+env:
+  parameter-store:
+     DOCKER_USERNAME: /flask-app/docker-credentials/username
+     DOCKER_PASSWORD: /flask-app/docker-credentials/password
+     DOCKER_URL: /flask-app/docker-registry/url
   #secrets-manager:
      # key: secret-id:json-key:version-stage:version-id
      # key: secret-id:json-key:version-stage:version-id
@@ -43,11 +41,12 @@ phases:
     commands:
       - cd day-14/simple-python-app
       - echo "Building Docker Image"
-      - docker build -t 
-      - docker push 
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin "$DOCKER_URL"
+      - docker build -t "$DOCKER_URL/$DOCKER_USERNAME/flask-app:latest" .
+      - docker push "$DOCKER_URL/$DOCKER_USERNAME/flask-app:latest"
   post_build:
     commands:
-      - echo "Build is successful."
+      - echo "Build is successfull"
       # - command
 #reports:
   #report-name-or-arn:
