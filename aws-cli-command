@@ -1,0 +1,7 @@
+#https://awscli.amazonaws.com/v2/documentation/api/latest/reference/index.html
+
+#Check aws s3 bucket list
+aws s3 ls
+
+#Create a key pair on cli
+aws ec2 create-key-pair --key-name demoKey --key-format pem
